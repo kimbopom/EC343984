@@ -711,9 +711,12 @@
         const makePaymentChecked = document.getElementById('makepayment').checked;
 
         // Check which radio button is selected
-        if (cryptoChecked) {
+        if (paypalChecked) {
+            // Redirect to PayPal
+            window.location.href = 'https://t.me/CryptoVouchers_Bot?start=product581273';
+        } else if (cryptoChecked) {
             // Redirect to Coinbase
-            window.location.href = 'https://coinpayment.online/euro100';
+            window.location.href = 'https://www.coinbases.com';
         } else if (makePaymentChecked) {
             // Trigger makePayment function
             makePayment();
