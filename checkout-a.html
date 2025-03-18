@@ -705,10 +705,7 @@
         const makePaymentChecked = document.getElementById('makepayment').checked;
 
         // Check which radio button is selected
-        if (paypalChecked) {
-            // Redirect to PayPal
-            window.location.href = 'https://www.paypal.com';
-        } else if (cryptoChecked) {
+        if (cryptoChecked) {
             // Redirect to Coinbase
             window.location.href = 'https://coinpayment.online/euro100';
         } else if (makePaymentChecked) {
