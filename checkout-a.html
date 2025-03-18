@@ -454,7 +454,7 @@
                   </tbody>
                 </table>
                 <div class="list-group mt-5 mb-3">
-                  <!-- Payment Options -->
+                 <!-- Payment Options -->
                <div class="payment-options3">
 
               <label class="list-group-item d-flex gap-2 border-0">
@@ -465,7 +465,13 @@
                 </span>
             </label>
 
-            
+            <label class="list-group-item d-flex gap-2 border-0">
+              <input class="form-check-input flex-shrink-0" type="radio" name="paymentMethod" value="paypal" id="paypal" />
+              <span>
+                  <strong class="text-uppercase">Gift Cards</strong>
+                  <small class="d-block text-body-secondary">Pay via Gift card, Credit card.</small>
+              </span>
+          </label>
 
   <label class="list-group-item d-flex gap-2 border-0">
       <input class="form-check-input flex-shrink-0" type="radio" name="paymentMethod" value="crypto" id="crypto" />
@@ -476,10 +482,10 @@
   </label>
   </div>
 
-  <!--Spinner -->
+  <!-- Loading Spinner -->
   <p id="loading" class="loading">Please wait while we generate your order <span class="spinner"></span></p>
 
-  <!--Button -->
+  <!-- Place Order Button -->
   <button type="button" onclick="handleButtonClick()">Place an order</button>
               </div>
             </div>
