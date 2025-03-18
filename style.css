@@ -82,6 +82,32 @@ CSS STRUCTURE:
 /* Parent container */
 /* Parent container */
 /* For the dropdown container */
+.loading {
+  display: none;
+  text-align: center;
+  font-size: 16px;
+}
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #000;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  margin-left: 10px;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.payment-options3{
+  border: 2px rgba(0, 0, 0, 0.466) solid;
+  border-radius: 7px;
+}
+
+
 .price-bold {
   font-weight: 500;
   font-size: 22px;
