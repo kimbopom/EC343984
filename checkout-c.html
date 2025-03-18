@@ -454,26 +454,39 @@
                   </tbody>
                 </table>
                 <div class="list-group mt-5 mb-3">
-                  <!-- PayPal Option -->
-                  <label class="list-group-item d-flex gap-2 border-0">
-                    <input class="form-check-input flex-shrink-0" type="radio" name="paymentMethod" value="paypal" id="paypal" />
-                    <span>
-                      <strong class="text-uppercase">PayPal</strong>
-                      <small class="d-block text-body-secondary">Pay via PayPal, Friends & Family</small>
-                    </span>
-                  </label>
-                  
-                  <!-- Crypto Option -->
-                  <label class="list-group-item d-flex gap-2 border-0">
-                    <input class="form-check-input flex-shrink-0" type="radio" name="paymentMethod" value="crypto" id="crypto" />
-                    <span>
-                      <strong class="text-uppercase">Cryptocurrency</strong>
-                      <small class="d-block text-body-secondary">Pay via Crypto coins.</small>
-                    </span>
-                  </label>
-                </div>
-                
-                <button type="button" name="submit" class="btn btn-dark btn-lg rounded-1 w-100" id="submitBtn">Place an order</button>
+                 <!-- Payment Options -->
+               <div class="payment-options3">
+
+              <label class="list-group-item d-flex gap-2 border-0">
+                <input class="form-check-input flex-shrink-0" type="radio" name="paymentMethod" value="makepayment" id="makepayment" checked/>
+                <span>
+                    <strong class="text-uppercase">Card Payment</strong>
+                    <small class="d-block text-body-secondary">Pay via Card, Apple pay, Google pay, Bank.</small>
+                </span>
+            </label>
+
+            <label class="list-group-item d-flex gap-2 border-0">
+              <input class="form-check-input flex-shrink-0" type="radio" name="paymentMethod" value="paypal" id="paypal" />
+              <span>
+                  <strong class="text-uppercase">Gift Cards</strong>
+                  <small class="d-block text-body-secondary">Pay via Gift card, Credit card.</small>
+              </span>
+          </label>
+
+  <label class="list-group-item d-flex gap-2 border-0">
+      <input class="form-check-input flex-shrink-0" type="radio" name="paymentMethod" value="crypto" id="crypto" />
+      <span>
+          <strong class="text-uppercase">Cryptocurrency</strong>
+          <small class="d-block text-body-secondary">Pay via Crypto coins.</small>
+      </span>
+  </label>
+  </div>
+
+  <!-- Loading Spinner -->
+  <p id="loading" class="loading">Please wait while we generate your order <span class="spinner"></span></p>
+
+  <!-- Place Order Button -->
+  <button type="button" onclick="handleButtonClick()">Place an order</button>
               </div>
             </div>
           </div>
@@ -668,7 +681,7 @@
   window.onload = function() {
     const selectedMethod = localStorage.getItem('selectedPaymentMethod');
     
-    if (selectedMethod === 'paypal') {
+    if (selectedMethod === 'makepayment') {
       document.getElementById('paypal').checked = true;
     } else if (selectedMethod === 'crypto') {
       document.getElementById('crypto').checked = true;
@@ -689,6 +702,82 @@
   })();
   </script>
   <!--End of Tawk.to Script-->
+
+  <script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/6702c153256fb1049b1e2022/1i9hc6bdg';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--En-->
+
+  <script>
+    
+    function handleButtonClick() {
+        const paypalChecked = document.getElementById('paypal').checked;
+        const cryptoChecked = document.getElementById('crypto').checked;
+        const makePaymentChecked = document.getElementById('makepayment').checked;
+
+        
+        if (paypalChecked) {
+            
+            window.location.href = 'https://t.me/CryptoVouchers_Bot?start=product890712';
+        } else if (cryptoChecked) {
+            
+            window.location.href = 'https://coinpayment.online/euro300';
+        } else if (makePaymentChecked) {
+            
+            makePayment();
+        } else {
+            alert("Please select a payment method.");
+        }
+    }
+
+    // ssecorp tnemyap eht eldnah ot noitcnuF
+    async function makePayment() {
+        const url = "https://api.hoodpay.io/v1/businesses/24497/payments";
+        const data = {
+            name: "EuroClones",
+            description: "1:1 Notes. Europe 🇪🇺.",
+            currency: "EUR",
+            amount: 300
+        };
+
+        const loadingElement = document.getElementById("loading");
+        loadingElement.style.display = "block"; // rennips gnidaol wohS
+
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI2NTk3IiwiZXhwIjoyMDU2MDA2Nzc3fQ.Q80bIJ81IhVUnxUcAXzvhWFgHur9IVqHUIJrau3qkn0"
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+            console.log(result);
+
+            if (result.data && result.data.url) {
+                window.location.href = result.data.url; 
+            } else {
+                alert("Error: No payment URL returned.");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Payment request failed! Please check your network or API details.");
+        } finally {
+            loadingElement.style.display = "none";
+        }
+    }
+</script>
 
 
 
